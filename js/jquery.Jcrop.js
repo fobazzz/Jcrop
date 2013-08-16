@@ -315,8 +315,9 @@
 
       $img.width($origimg.width());
       $img.height($origimg.height());
-      $origimg.after($img).hide();
-      $origimg.data('display', $origimg.css('display')).css({display:none});
+      $origimg.after($img);
+      $origimg.data('display', $origimg.css('display'));
+      $origimg.hide();
 
 
     } else {
@@ -1433,14 +1434,16 @@
     {
       $div.remove();
       // $origimg.show();
+      console.log($origimg.data('display'));
       $origimg.css({
-        'visibility','visible'
-        'display', $origimg.data('display');
+        'visibility':'visible',
+        'display': $origimg.data('display')
       });
       $(obj).removeData('Jcrop');
       $(obj).removeData('display');
 
       $origimg.trigger('jcrop.destroy');
+      $origimg.off('jcrop');
     }
     //}}}
     function setImage(src, callback) //{{{

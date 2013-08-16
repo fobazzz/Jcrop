@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hello World | Jcrop Demo</title>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.Jcrop.js"></script>
+<script type="text/javascript">
+  jQuery(function($){
+
+    // How easy is this??
+    var jcrop_api;
+    $('#target').Jcrop({},function () {
+      jcrop_api = this
+    });
+
+    $('#target').on('jcrop.disable', function (e) {alert('jcrop.disable')});
+    $('#target').on('jcrop.enable', function (e) {alert('jcrop.enable')});
+    $('#target').on('jcrop.cancel', function (e) {alert('jcrop.cancel')});
+    $('#target').on('jcrop.destroy', function (e) {alert('jcrop.destroy')});
+
+    $('.j-disable').on('click', function (e ) {
+      e.preventDefault();
+      jcrop_api.disable();
+    })
+    $('.j-enable').on('click', function (e ) {
+      e.preventDefault();
+      jcrop_api.enable()
+    })
+
+    $('.j-destroy').on('click', function (e ) {
+      e.preventDefault();
+      jcrop_api.destroy();
+    })
+
+  });
+
+</script>
+<link rel="stylesheet" href="demo_files/main.css" type="text/css" />
+<link rel="stylesheet" href="demo_files/demos.css" type="text/css" />
+<link rel="stylesheet" href="../css/jquery.Jcrop.css" type="text/css" />
+
+</head>
+<body>
+
+<div class="container">
+<div class="row">
+<div class="span12">
+<div class="jc-demo-box">
+
+<div class="page-header">
+<ul class="breadcrumb first">
+  <li><a href="../index.html">Jcrop</a> <span class="divider">/</span></li>
+  <li><a href="../index.html">Demos</a> <span class="divider">/</span></li>
+  <li class="active">Hello World</li>
+</ul>
+<h1>Event</h1>
+</div>
+
+  <img src="demo_files/sago.jpg" id="target" alt="[Jcrop Example]" />
+
+  <div class="description">
+  <p>
+    <b>Event</b><br />
+    <a href="" class="j-disable">disable</a>
+    <a href="" class="j-enable">enable</a>
+
+    <a href="" class="j-destroy">destroy</a>
+  </p>
+  </div>
+
+<div class="tapmodo-footer">
+  <a href="http://tapmodo.com" class="tapmodo-logo segment">tapmodo.com</a>
+  <div class="segment"><b>&copy; 2008-2013 Tapmodo Interactive LLC</b><br />
+    Jcrop is free software released under <a href="../MIT-LICENSE.txt">MIT License</a>
+  </div>
+</div>
+
+<div class="clearfix"></div>
+
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
+
