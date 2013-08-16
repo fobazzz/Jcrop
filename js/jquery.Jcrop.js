@@ -1612,12 +1612,12 @@
       else {
         if (this.tagName == 'IMG')
           $.Jcrop.Loader(this,function(){
-            $(this).css({display:'block',visibility:'hidden'});
+            $(this).css({visibility:'hidden'});
             api = $.Jcrop(this, options);
             if ($.isFunction(callback)) callback.call(api);
           });
         else {
-          $(this).css({display:'block',visibility:'hidden'});
+          $(this).css({visibility:'hidden'});
           api = $.Jcrop(this, options);
           if ($.isFunction(callback)) callback.call(api);
         }
