@@ -1437,7 +1437,9 @@
       console.log($origimg.data('display'));
       $origimg.css({
         'visibility':'visible',
-        'display': $origimg.data('display')
+        'display': $origimg.data('display'),
+        'width' : '',
+        'height' : ''
       });
       $(obj).removeData('Jcrop');
       $(obj).removeData('display');
