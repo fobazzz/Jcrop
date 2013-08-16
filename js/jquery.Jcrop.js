@@ -316,6 +316,8 @@
       $img.width($origimg.width());
       $img.height($origimg.height());
       $origimg.after($img).hide();
+      $origimg.data('display', $origimg.css('display')).css({display:none});
+
 
     } else {
       $img = $origimg.css(img_css).show();
@@ -327,8 +329,6 @@
 
     var boundx = $img.width(),
         boundy = $img.height(),
-        
-        
         $div = $('<div />').width(boundx).height(boundy).addClass(cssClass('holder')).css({
         position: 'relative',
         backgroundColor: options.bgColor
@@ -1409,26 +1409,38 @@
       Selection.disableHandles();
       Selection.setCursor('default');
       Tracker.setCursor('default');
+
+      $origimg.trigger('jcrop.disable');
     }
     //}}}
     function enableCrop() //{{{
     {
       options.disabled = false;
       interfaceUpdate();
+
+      $origimg.trigger('jcrop.enable');
     }
     //}}}
     function cancelCrop() //{{{
     {
       Selection.done();
       Tracker.activateHandlers(null, null);
+
+      $origimg.trigger('jcrop.cancel');
     }
     //}}}
     function destroy() //{{{
     {
       $div.remove();
-      $origimg.show();
-      $origimg.css('visibility','visible');
+      // $origimg.show();
+      $origimg.css({
+        'visibility','visible'
+        'display', $origimg.data('display');
+      });
       $(obj).removeData('Jcrop');
+      $(obj).removeData('display');
+
+      $origimg.trigger('jcrop.destroy');
     }
     //}}}
     function setImage(src, callback) //{{{
