@@ -1434,7 +1434,6 @@
     {
       $div.remove();
       // $origimg.show();
-      console.log($origimg.data('display'));
       $origimg.css({
         'visibility':'visible',
         'display': $origimg.data('display'),
